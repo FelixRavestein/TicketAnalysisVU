@@ -68,7 +68,7 @@ def main():
     
     # Set a default number of topics to 50 and adjust min_topic_size as needed
     n_topics = 50
-    min_topic_size = 50  # Adjust this parameter as needed
+    min_topic_size = 20  # Adjust this parameter as needed
     topic_model = perform_nlp_analysis(preprocessed_texts, n_topics, min_topic_size)
     
     visualize_and_save_results(topic_model, output_folder)
