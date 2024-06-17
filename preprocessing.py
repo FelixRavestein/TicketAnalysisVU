@@ -52,10 +52,12 @@ def is_numeric(string):
 
 def preprocess_texts(texts, forbidden_words):
     stops = stopwords.words("dutch") + stopwords.words("english") + forbidden_words
-    print("Stopwords including provided forbidden words succesfully loaded")
+    print("Stopwords including provided forbidden words successfully loaded")
     
     clean_texts = []
     for text in texts:
+        if not isinstance(text, str):
+            text = str(text)
         tokens = tokenization(text)
         tokens = [token for token in tokens if not is_date(token) and not is_numeric(token)]
         

@@ -154,7 +154,7 @@ The project consists of the following main files:
 ## Notes
 
 - Ensure that the column names in your Excel file are correctly named and match the column number you provide.
-- The forbidden words file should contain one word per line; the code will convert all words  to lowercase.
+- The forbidden words file should contain one word per line, all in lowercase.
 - If you encounter any issues or have suggestions, feel free to open an issue or contribute to the project.
 
 ## License

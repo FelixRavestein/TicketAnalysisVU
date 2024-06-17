@@ -17,7 +17,7 @@ def visualize_and_save_results(topic_model, output_folder):
     print("Intertopic distance map saved as 'intertopic_distance_map.html'.")
 
     print("\nGenerating bar chart of top words per topic...")
-    fig_barchart = topic_model.visualize_barchart(top_n_topics=10, n_words=10, width=1200, height=800)
+    fig_barchart = topic_model.visualize_barchart(top_n_topics=50, n_words=10, width=1200, height=800)
     pio.write_html(fig_barchart, file=os.path.join(output_folder, 'top_words_per_topic.html'), auto_open=False)
     print("Bar chart of top words per topic saved as 'top_words_per_topic.html'.")
 
@@ -28,6 +28,8 @@ def preprocess_for_wordcloud(texts, forbidden_words):
     
     # Custom function to clean and preprocess the text
     def clean_text(text):
+        if not isinstance(text, str):
+            text = str(text)
         tokens = text.split()
         tokens = [token.lower() for token in tokens if token.isalpha() and token.lower() not in stopwords_combined]
         return ' '.join(tokens)

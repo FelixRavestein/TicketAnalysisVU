@@ -56,7 +56,7 @@ def main():
     
     data_subset = df.iloc[:num_entries]
     
-    preprocessed_texts = preprocess_texts(data_subset[selected_column], forbidden_words)
+    preprocessed_texts = preprocess_texts(data_subset[selected_column].astype(str), forbidden_words)
     data_subset['lemmatized'] = preprocessed_texts
     
     print(f"Number of preprocessed texts: {len(preprocessed_texts)}")
