@@ -26,6 +26,18 @@ def read_forbidden_words(file_path):
         print(f"Error reading forbidden words file: {e}")
         sys.exit(1)
 
+def filter_topics(topic_list):
+    filtered_topics = []
+    for topic in topic_list:
+        # Check if the topic is a string of exactly four digits
+        if re.match(r'^\d{4}$', topic):
+            continue
+        # Check if the topic starts with 't' followed by digits
+        if re.match(r'^t\d+$', topic):
+            continue
+        filtered_topics.append(topic)
+    return filtered_topics
+
 def remove_punctuation(text):
     return "".join([i for i in text if i not in string.punctuation])
 
@@ -67,6 +79,7 @@ def preprocess_texts(texts, forbidden_words):
         tokens = tokenization(text)
         tokens = remove_stopwords(tokens, stops)
         tokens = lemmatizer(tokens)
+        tokens = filter_topics(tokens)
         clean_texts.append(" ".join(tokens))  # Join tokens back into a single string
     
     return clean_texts
