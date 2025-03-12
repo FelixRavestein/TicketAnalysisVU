@@ -35,7 +35,9 @@ Ensure you have Python 3.9.18 installed on your machine.
 
    pip install -r requirements.txt
 
-3. **Ensure NLTK stopwords and VADER lexicon are downloaded**:
+   If you get an error with hbdscan, try: conda install -c conda-forge hdbscan
+
+4. **Ensure NLTK stopwords and VADER lexicon are downloaded**:
 
    python -m nltk.downloader stopwords
    python -m nltk.downloader punkt
