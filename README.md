@@ -35,10 +35,7 @@ Ensure you have Python 3.9.18 installed on your machine.
 
    pip install -r requirements.txt
 
-   You might also need https://visualstudio.microsoft.com/visual-cpp-build-tools/
-   And could use the following for futher troubleshooting: https://stackoverflow.com/questions/64261546/how-to-solve-error-microsoft-visual-c-14-0-or-greater-is-required-when-inst
-
-4. **Ensure NLTK stopwords and VADER lexicon are downloaded**:
+3. **Ensure NLTK stopwords and VADER lexicon are downloaded**:
 
    python -m nltk.downloader stopwords
    python -m nltk.downloader punkt

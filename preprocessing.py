@@ -29,10 +29,8 @@ def read_forbidden_words(file_path):
 def filter_topics(topic_list):
     filtered_topics = []
     for topic in topic_list:
-        # Check if the topic is a string of exactly four digits
         if re.match(r'^\d{4}$', topic):
             continue
-        # Check if the topic starts with 't' followed by digits
         if re.match(r'^t\d+$', topic):
             continue
         filtered_topics.append(topic)
@@ -80,6 +78,14 @@ def preprocess_texts(texts, forbidden_words):
         tokens = remove_stopwords(tokens, stops)
         tokens = lemmatizer(tokens)
         tokens = filter_topics(tokens)
-        clean_texts.append(" ".join(tokens))  # Join tokens back into a single string
+        clean_texts.append(" ".join(tokens))
     
     return clean_texts
+
+def preprocess_data(df, forbidden_words):
+    beschrijving = df.drop(columns=['nummer'], errors='ignore').apply(lambda row: ' '.join(row.values.astype(str)), axis=1)
+    nummer = df['nummer']
+    
+    preprocessed_beschrijving = preprocess_texts(beschrijving, forbidden_words)
+    
+    return preprocessed_beschrijving, nummer
